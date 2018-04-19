@@ -1440,7 +1440,7 @@
         <div class="panel panel-info margin-0">
           <div class="panel-body">
             <div class="row">
-              <div class="col-sm-5" data-toggle="tooltip" title="View results in different formats">
+              <div class="col-sm-5">
                 <div class="form-group">
                   <label for="viewSelect" class="col-sm-2 control-label">
                     View:
@@ -1448,19 +1448,29 @@
                   <div class="col-sm-10">
                     <select id="viewSelect" class="form-control" name="frsorttype">
                       <option value="question" selected="">
-                        Group by - Question
+                        <div data-toggle="tooltip" title="View results by question">
+                          Group by - Question
+                        </div>
                       </option>
-                      <option value="giver-recipient-question">
-                        Group by - Giver &gt; Recipient &gt; Question
+                      <option value="giver-recipient-question"> 
+                        <div data-toggle="tooltip" title="View results by giver, then by recipient, and then by question">
+                          Group by - Giver &#8594; Recipient &#8594; Question
+                        </div>
                       </option>
-                      <option value="recipient-giver-question">
-                        Group by - Recipient &gt; Giver &gt; Question
+                      <option value="recipient-giver-question"> 
+                        <div data-toggle="tooltip" title="View results by recipient, then by giver, and then by question">
+                          Group by - Recipient &#8594; Giver &#8594; Question
+                        </div>
                       </option>
                       <option value="giver-question-recipient">
-                        Group by - Giver &gt; Question &gt; Recipient
+                        <div data-toggle="tooltip" title="View results by giver, then by question, and then by recipient">
+                          Group by - Giver &#8594; Question &#8594; Recipient
+                        </div>
                       </option>
                       <option value="recipient-question-giver">
-                        Group by - Recipient &gt; Question &gt; Giver
+                        <div data-toggle="tooltip" title="View results by recipient, then by question, and then by giver">
+                          Group by - Recipient &#8594; Question &#8594; Giver 
+                        </div>
                       </option>
                     </select>
                   </div>
