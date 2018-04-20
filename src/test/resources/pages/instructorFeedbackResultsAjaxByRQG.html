@@ -159,13 +159,13 @@
     <div class="well well-plain">
       <div class="row">
         <div class="col-md-5">
-          <div data-original-title="View results by recipient, then by question, and then by giver" data-toggle="tooltip" title="">
-            <div class="row">
-              <label class="col-md-offset-1 col-md-3">
-                View:
-              </label>
-              <div class="col-md-8">
-                Group by - Recipient &#8594; Question &#8594; Giver
+          <div class="row">
+            <label class="col-md-offset-1 col-md-3">
+              View:
+            </label>
+            <div class="col-md-8">
+              <div data-original-title="View results by recipient, then by question, and then by giver" data-toggle="tooltip" title="">
+                Group by - Recipient → Question → Giver
               </div>
             </div>
           </div>
@@ -233,29 +233,26 @@
             <div class="modal-body">
               <div class="row">
                 <div class="col-md-7">
-                  <div class="form-group">
-                    <label class="control-label" for="viewSelect">
-                      View:
-                    </label>
+                  <div data-original-title="View results in different formats" data-toggle="tooltip" title="">
+                    <div class="form-group">
+                      <label class="control-label" for="viewSelect">
+                        View:
+                      </label>
                       <select class="form-control" id="viewSelect" name="frsorttype">
-                        <option value="question">                          <div data-toggle="tooltip" title="View results by question">
-                            Group by - Question
-                          </div>
+                        <option value="question">
+                          Group by - Question
                         </option>
-                        <option value="giver-recipient-question">                          <div data-toggle="tooltip" title="View results by giver, then by recipient, and then by question">
-                            Group by - Giver &#8594; Recipient &#8594; Question
-                          </div>
+                        <option value="giver-recipient-question">
+                          Group by - Giver → Recipient → Question
                         </option>
                         <option value="recipient-giver-question">
-                          <div data-toggle="tooltip" title="View results by recipient, then by giver, and then by question">
-                            Group by - Recipient &#8594; Giver &#8594; Question                          </div>
+                          Group by - Recipient → Giver → Question
                         </option>
-                        <option value="giver-question-recipient">                          <div data-toggle="tooltip" title="View results by giver, then by question, and then by recipient">
-                            Group by - Giver &#8594; Question &#8594; Recipient
-                          </div>
+                        <option value="giver-question-recipient">
+                          Group by - Giver → Question → Recipient
                         </option>
                         <option selected="" value="recipient-question-giver">
-                          Group by - Recipient &#8594; Question &#8594; Giver
+                          Group by - Recipient → Question → Giver
                         </option>
                       </select>
                     </div>
