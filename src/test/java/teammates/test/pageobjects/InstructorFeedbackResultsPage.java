@@ -44,6 +44,9 @@ public class InstructorFeedbackResultsPage extends AppPage {
     @FindBy(className = "remind-btn-no-response")
     public WebElement remindAllButton;
 
+    @FindBy(id = "remindModal")
+    private WebElement remindModal;
+
     public InstructorFeedbackResultsPage(Browser browser) {
         super(browser);
     }
@@ -90,7 +93,7 @@ public class InstructorFeedbackResultsPage extends AppPage {
         displayEditSettingsWindow();
 
         Select select = new Select(browser.driver.findElement(By.name(Const.ParamsNames.FEEDBACK_RESULTS_SORTTYPE)));
-        select.selectByVisibleText("Group by - Giver > Recipient > Question");
+        select.selectByVisibleText("Group by - Giver &#8594; Recipient &#8594; Question");
 
         submitEditForm();
     }
@@ -99,7 +102,7 @@ public class InstructorFeedbackResultsPage extends AppPage {
         displayEditSettingsWindow();
 
         Select select = new Select(browser.driver.findElement(By.name(Const.ParamsNames.FEEDBACK_RESULTS_SORTTYPE)));
-        select.selectByVisibleText("Group by - Recipient > Giver > Question");
+        select.selectByVisibleText("Group by - Recipient &#8594; Giver &#8594; Question");
 
         submitEditForm();
     }
@@ -108,7 +111,7 @@ public class InstructorFeedbackResultsPage extends AppPage {
         displayEditSettingsWindow();
 
         Select select = new Select(browser.driver.findElement(By.name(Const.ParamsNames.FEEDBACK_RESULTS_SORTTYPE)));
-        select.selectByVisibleText("Group by - Giver > Question > Recipient");
+        select.selectByVisibleText("Group by - Giver &#8594; Question &#8594; Recipient");
 
         submitEditForm();
     }
@@ -117,7 +120,7 @@ public class InstructorFeedbackResultsPage extends AppPage {
         displayEditSettingsWindow();
 
         Select select = new Select(browser.driver.findElement(By.name(Const.ParamsNames.FEEDBACK_RESULTS_SORTTYPE)));
-        select.selectByVisibleText("Group by - Recipient > Question > Giver");
+        select.selectByVisibleText("Group by - Recipient &#8594; Question &#8594; Giver");
 
         submitEditForm();
     }
@@ -190,7 +193,7 @@ public class InstructorFeedbackResultsPage extends AppPage {
 
     public void clickRemindAllButtonAndWaitForFormToLoad() {
         click(remindAllButton);
-        waitForRemindModalPresence();
+        waitForElementVisibility(remindModal);
         WebElement remindButton = browser.driver.findElement(By.className("remind-particular-button"));
         waitForElementToBeClickable(remindButton);
     }
@@ -585,9 +588,10 @@ public class InstructorFeedbackResultsPage extends AppPage {
     }
 
     public boolean isSectionPanelExist(String section) {
-        List<WebElement> panels = browser.driver.findElements(By.cssSelector("div[id^='panelHeading-']"));
-        for (WebElement panel : panels) {
-            String panelSectionName = panel.findElement(By.className("panel-heading-text")).getText();
+        List<WebElement> panelsWithHeading =
+                browser.driver.findElements(By.cssSelector("div[id^='panelHeading-'] .panel-heading-text"));
+        for (WebElement panel : panelsWithHeading) {
+            String panelSectionName = panel.getText();
             if (panelSectionName.equals(section)) {
                 return true;
             }

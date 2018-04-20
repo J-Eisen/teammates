@@ -1,3 +1,4 @@
+<%@ page trimDirectiveWhitespaces="true" %>
 <%@ page pageEncoding="UTF-8" %>
 <h4 class="text-color-primary" id="sessionTypes">Sessions</h4>
 <div id="contentHolder">
@@ -20,10 +21,10 @@
               <span class="text-muted">
                 <ul>
                   <li>
-                    Session with your own questions
+                    "session with my own questions"
                   </li>
                   <li>
-                    Team peer evaluation session (creates 5 standard questions)
+                    "session using template: team peer evaluation" (creates 5 standard questions)
                   </li>
                 </ul>
               </span>
@@ -171,10 +172,10 @@
                 <div class="col-md-5">
                   <select class="form-control" name="fstype" id="fstype">
                     <option value="STANDARD" selected="">
-                      Session with your own questions
+                      session with my own questions
                     </option>
                     <option value="TEAMEVALUATION">
-                      Team peer evaluation session
+                      session using template: team peer evaluation
                     </option>
                   </select>
                 </div>
@@ -203,54 +204,23 @@
                         </div>
                       </div>
                     </div>
-                    <div class="col-md-6" data-toggle="tooltip" data-placement="top" title="You should not need to change this as your timezone is auto-detected. <br><br>However, note that daylight saving is not taken into account i.e. if you are in UTC -8:00 and there is daylight saving, you should choose UTC -7:00 and its corresponding timings.">
+                    <div class="col-md-6" data-toggle="tooltip" data-placement="top" title="You should not need to change this as your timezone is auto-detected. Daylight saving time is supported.">
                       <div class="form-group">
                         <h5 class="col-sm-4">
-                          <label for="timezone" class="control-label">Timezone</label>
+                          <label class="control-label">
+                            Time Zone
+                          </label>
                         </h5>
                         <div class="col-sm-8">
-                          <select class="form-control" name="timezone" id="timezone">
-                            <option value="-12">(UTC -12:00) Baker Island, Howland Island</option>
-                            <option value="-11">(UTC -11:00) American Samoa, Niue</option>
-                            <option value="-10">(UTC -10:00) Hawaii, Cook Islands</option>
-                            <option value="-9.5">(UTC -09:30) Marquesas Islands</option>
-                            <option value="-9">(UTC -09:00) Gambier Islands, Alaska</option>
-                            <option value="-8">(UTC -08:00) Los Angeles, Vancouver, Tijuana</option>
-                            <option value="-7">(UTC -07:00) Phoenix, Calgary, Ciudad Juárez</option>
-                            <option value="-6">(UTC -06:00) Chicago, Guatemala City, Mexico City, San José, San Salvador, Tegucigalpa, Winnipeg</option>
-                            <option value="-5">(UTC -05:00) New York, Lima, Toronto, Bogotá, Havana, Kingston</option>
-                            <option value="-4.5">(UTC -04:30) Caracas</option>
-                            <option value="-4">(UTC -04:00) Santiago, La Paz, San Juan de Puerto Rico, Manaus, Halifax</option>
-                            <option value="-3.5">(UTC -03:30) St. John's</option>
-                            <option value="-3">(UTC -03:00) Buenos Aires, Montevideo, São Paulo</option>
-                            <option value="-2">(UTC -02:00) Fernando de Noronha, South Georgia and the South Sandwich Islands</option>
-                            <option value="-1">(UTC -01:00) Cape Verde, Greenland, Azores islands</option>
-                            <option value="0">(UTC) Accra, Abidjan, Casablanca, Dakar, Dublin, Lisbon, London</option>
-                            <option value="1">(UTC +01:00) Belgrade, Berlin, Brussels, Lagos, Madrid, Paris, Rome, Tunis, Vienna, Warsaw</option>
-                            <option value="2">(UTC +02:00) Athens, Sofia, Cairo, Kiev, Istanbul, Beirut, Helsinki, Jerusalem, Johannesburg, Bucharest</option>
-                            <option value="3">(UTC +03:00) Nairobi, Baghdad, Doha, Khartoum, Minsk, Riyadh</option>
-                            <option value="3.5">(UTC +03:30) Tehran</option>
-                            <option value="4">(UTC +04:00) Baku, Dubai, Moscow</option>
-                            <option value="4.5">(UTC +04:30) Kabul</option>
-                            <option value="5">(UTC +05:00) Karachi, Tashkent</option>
-                            <option value="5.5">(UTC +05:30) Colombo, Delhi</option>
-                            <option value="5.75">(UTC +05:45) Kathmandu</option>
-                            <option value="6">(UTC +06:00) Almaty, Dhaka, Yekaterinburg</option>
-                            <option value="6.5">(UTC +06:30) Yangon</option>
-                            <option value="7">(UTC +07:00) Jakarta, Bangkok, Novosibirsk, Hanoi</option>
-                            <option value="8">(UTC +08:00) Perth, Beijing, Manila, Singapore, Kuala Lumpur, Denpasar, Krasnoyarsk</option>
-                            <option value="8.75">(UTC +08:45) Eucla</option>
-                            <option value="9">(UTC +09:00) Seoul, Tokyo, Pyongyang, Ambon, Irkutsk</option>
-                            <option value="9.5">(UTC +09:30) Adelaide</option>
-                            <option value="10">(UTC +10:00) Canberra, Yakutsk, Port Moresby</option>
-                            <option value="10.5">(UTC +10:30) Lord Howe Islands</option>
-                            <option value="11">(UTC +11:00) Vladivostok, Noumea</option>
-                            <option value="12">(UTC +12:00) Auckland, Suva</option>
-                            <option value="12.75">(UTC +12:45) Chatham Islands</option>
-                            <option value="13">(UTC +13:00) Phoenix Islands, Tokelau, Tonga</option>
-                            <option value="14">(UTC +14:00) Line Islands</option>
-
-                          </select>
+                          <div class="input-group">
+                            <select class="form-control">
+                              <option>UTC</option>
+                              <option>Other options omitted...</option>
+                            </select>
+                            <span class="input-group-btn">
+                              <input type="button" class="btn btn-primary" value="Auto-Detect">
+                            </span>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -515,7 +485,6 @@
                           </label>
                           <input type="radio" name="resultsVisibleFromButton" id="resultsVisibleFromButton_later" value="later">
                         </div>
-                      </div>
                       </div>
                     </div>
                   </div>
@@ -940,7 +909,9 @@
               <br>
               <div class="col-sm-12 form-inline mobile-align-left">
                 <label for="input" style="text-indent: 24px">
-                  <span data-toggle="tooltip" data-placement="top" title="" data-original-title="The party being evaluated or given feedback to" class="tool-tip-decorate">Evaluee/Recipient </span>
+                  <span data-toggle="tooltip" data-placement="top" title="" data-original-title="The party being evaluated or given feedback to" class="tool-tip-decorate">
+                    Evaluee/Recipient
+                  </span>
                 </label>
               </div>
 
@@ -1134,7 +1105,7 @@
                             <option value="INSTRUCTORS">instructors</option>
                           </select>
                         </div>
-                        <input type="hidden" id="generatedOptions--1" name="generatedOptions" value="NONE">
+                        <input type="hidden" id="mcqGeneratedOptions--1" name="mcqGeneratedOptions" value="NONE">
                       </div>
                       <br>
                     </div>
@@ -1469,7 +1440,7 @@
         <div class="panel panel-info margin-0">
           <div class="panel-body">
             <div class="row">
-              <div class="col-sm-5" data-toggle="tooltip" title="View results in different formats">
+              <div class="col-sm-5">
                 <div class="form-group">
                   <label for="viewSelect" class="col-sm-2 control-label">
                     View:
@@ -1477,19 +1448,29 @@
                   <div class="col-sm-10">
                     <select id="viewSelect" class="form-control" name="frsorttype">
                       <option value="question" selected="">
-                        Group by - Question
+                        <div data-toggle="tooltip" title="View results by question">
+                          Group by - Question
+                        </div>
                       </option>
-                      <option value="giver-recipient-question">
-                        Group by - Giver &gt; Recipient &gt; Question
+                      <option value="giver-recipient-question"> 
+                        <div data-toggle="tooltip" title="View results by giver, then by recipient, and then by question">
+                          Group by - Giver &#8594; Recipient &#8594; Question
+                        </div>
                       </option>
-                      <option value="recipient-giver-question">
-                        Group by - Recipient &gt; Giver &gt; Question
+                      <option value="recipient-giver-question"> 
+                        <div data-toggle="tooltip" title="View results by recipient, then by giver, and then by question">
+                          Group by - Recipient &#8594; Giver &#8594; Question
+                        </div>
                       </option>
                       <option value="giver-question-recipient">
-                        Group by - Giver &gt; Question &gt; Recipient
+                        <div data-toggle="tooltip" title="View results by giver, then by question, and then by recipient">
+                          Group by - Giver &#8594; Question &#8594; Recipient
+                        </div>
                       </option>
                       <option value="recipient-question-giver">
-                        Group by - Recipient &gt; Question &gt; Giver
+                        <div data-toggle="tooltip" title="View results by recipient, then by question, and then by giver">
+                          Group by - Recipient &#8594; Question &#8594; Giver 
+                        </div>
                       </option>
                     </select>
                   </div>
@@ -2543,7 +2524,7 @@
                               <option value="INSTRUCTORS">instructors</option>
                             </select>
                           </div>
-                          <input type="hidden" id="generatedOptions-6" name="generatedOptions" value="NONE" disabled="">
+                          <input type="hidden" id="mcqGeneratedOptions-6" name="mcqGeneratedOptions" value="NONE" disabled="">
                         </div>
                         <br>
                       </div>
@@ -2968,7 +2949,7 @@
                               <option value="INSTRUCTORS">instructors</option>
                             </select>
                           </div>
-                          <input type="hidden" id="generatedOptions-1" name="generatedOptions" value="TEAMS" disabled="">
+                          <input type="hidden" id="mcqGeneratedOptions-1" name="mcqGeneratedOptions" value="TEAMS" disabled="">
                         </div>
                         <br>
                       </div>
@@ -4136,10 +4117,22 @@
                           </div>
                           <div class="row">
                             <div class="col-sm-12">
-                              <div class="checkbox" id="constSum_tooltipText-6" data-toggle="tooltip" data-placement="top" data-container="body" title="" data-original-title="Ticking this prevents a giver from distributing the same number of points to multiple options">
+                              <div class="checkbox" id="constSum_tooltipText-6"
+                                   data-toggle="tooltip" data-placement="top" data-container="body"
+                                   title="This determines whether a giver can distribute the same number of points to multiple options">
                                 <label class="bold-label">
-                                  <input type="checkbox" name="constSumUnevenDistribution" disabled="" id="constSum_UnevenDistribution-6">
-                                  <span id="constSum_labelText-6">Every option to receive a different number of points</span>
+                                  <span class="inline-block">
+                                    <input type="checkbox" name="constSumUnevenDistribution" disabled id="constSum_UnevenDistribution-6">
+                                  </span>
+                                  <select class="form-control width-auto inline" id="constSumDistributePointsSelect-6" disabled>
+                                    <option value="All options">
+                                      Every option
+                                    </option>
+                                    <option value="At least some options">
+                                      At least some options
+                                    </option>
+                                  </select>
+                                  to receive a different number of points
                                 </label>
                               </div>
                             </div>
@@ -4749,10 +4742,22 @@
                           </div>
                           <div class="row">
                             <div class="col-sm-12">
-                              <div class="checkbox" id="constSum_tooltipText-6" data-toggle="tooltip" data-placement="top" data-container="body" title="" data-original-title="Ticking this prevents a giver from distributing the same number of points to multiple recipients">
+                              <div class="checkbox" id="constSum_tooltipText-6"
+                                   data-toggle="tooltip" data-placement="top" data-container="body"
+                                   title="This determines whether a giver can distribute the same number of points to multiple recipients">
                                 <label class="bold-label">
-                                  <input type="checkbox" name="constSumUnevenDistribution" disabled="" id="constSum_UnevenDistribution-6">
-                                  <span id="constSum_labelText-6">Every recipient to receive a different number of points</span>
+                                  <span class="inline-block">
+                                    <input type="checkbox" name="constSumUnevenDistribution" disabled id="constSum_UnevenDistribution-6">
+                                  </span>
+                                  <select class="form-control width-auto inline" id="constSumDistributePointsSelect-6" disabled>
+                                    <option value="All options">
+                                      Every option
+                                    </option>
+                                    <option value="At least some options">
+                                      At least some options
+                                    </option>
+                                  </select>
+                                  to receive a different number of points
                                 </label>
                               </div>
                             </div>
@@ -6149,12 +6154,22 @@
                   </ul>
 
                   <br>
+                  <div class="col-sm-12 form-inline mobile-align-left">
+                    <label for="input" style="text-indent: 24px">
+                      <span data-toggle="tooltip" data-placement="top" title="" data-original-title="The party being evaluated or given feedback to" class="tool-tip-decorate">
+                        Evaluee/Recipient
+                      </span>
+                    </label>
+                  </div>
+                  <br><br>
                   <div class="form-group margin-0">
-                    <div class="col-sm-2 form-inline" style="text-align:right">
-                      <label for="input">To:</label>
-                      <span> Charlie Davis</span>
+                    <div class="col-sm-3 form-inline mobile-align-left" style="text-align:right">
+                      <label>
+                        <span> Charlie Davis</span>
+                      </label>
+                      (Student) :
                     </div>
-                    <div class="col-sm-10">
+                    <div class="col-sm-9">
                       <div class="row">
                         <div class="col-sm-12 table-responsive">
                           <table class="table table-striped table-bordered margin-0" id="rubricResponseTable-10-0">
@@ -6232,11 +6247,13 @@
 
                   <br>
                   <div class="form-group margin-0">
-                    <div class="col-sm-2 form-inline" style="text-align:right">
-                      <label for="input">To:</label>
-                      <span> Francis Gabriel</span>
+                    <div class="col-sm-3 form-inline mobile-align-left" style="text-align:right">
+                      <label>
+                        <span> Francis Gabriel</span>
+                      </label>
+                      (Student) :
                     </div>
-                    <div class="col-sm-10">
+                    <div class="col-sm-9">
                       <div class="row">
                         <div class="col-sm-12 table-responsive">
                           <table class="table table-striped table-bordered margin-0" id="rubricResponseTable-10-1">

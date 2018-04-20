@@ -2,11 +2,9 @@ package teammates.ui.controller;
 
 import java.time.Instant;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 import com.google.appengine.api.datastore.Text;
 
@@ -28,8 +26,6 @@ import teammates.common.exception.TeammatesException;
 import teammates.common.util.Assumption;
 import teammates.common.util.Const;
 import teammates.common.util.EmailWrapper;
-import teammates.common.util.HttpRequestHelper;
-import teammates.common.util.JsonUtils;
 import teammates.common.util.Logger;
 import teammates.common.util.SanitizationHelper;
 import teammates.common.util.StatusMessage;
@@ -175,23 +171,6 @@ public abstract class FeedbackSubmissionEditSaveAction extends Action {
             }
         }
 
-        for (int questionIndx = numOfQuestionsToGet + 1; questionIndx <= 1000; questionIndx++) {
-            String totalResponsesForQuestion = getRequestParamValue(
-                    Const.ParamsNames.FEEDBACK_QUESTION_RESPONSETOTAL + "-" + questionIndx);
-
-            if (totalResponsesForQuestion != null) {
-                String questionsResponses = data.bundle.getSortedQuestions().stream()
-                        .map(q -> q.toString() + "\n" + data.bundle.questionResponseBundle.get(q))
-                        .collect(Collectors.joining("\n\n"));
-
-                log.severe("Encountered responses in submission to questions that were not part of "
-                        + "the feedback session saved in the datastore!"
-                        + "\n\nParameters: " + HttpRequestHelper.printRequestParameters(request)
-                        + "\n\nQuestions and responses in datastore:\n\n" + questionsResponses + "\n");
-                break;
-            }
-        }
-
         saveNewReponses(responsesToSave);
         deleteResponses(responsesToDelete);
         updateResponses(responsesToUpdate);
@@ -296,25 +275,6 @@ public abstract class FeedbackSubmissionEditSaveAction extends Action {
     }
 
     private void deleteResponses(List<FeedbackResponseAttributes> responsesToDelete) {
-        if (responsesToDelete.isEmpty()) {
-            return;
-        }
-
-        Map<String, FeedbackResponseAttributes> existingResponses = new HashMap<>();
-        for (List<FeedbackResponseAttributes> questionResponses : data.bundle.questionResponseBundle.values()) {
-            for (FeedbackResponseAttributes response : questionResponses) {
-                existingResponses.put(response.getId(), response);
-            }
-        }
-        List<FeedbackResponseAttributes> existingResponsesToDelete = new ArrayList<>();
-        for (FeedbackResponseAttributes response : responsesToDelete) {
-            existingResponsesToDelete.add(existingResponses.get(response.getId()));
-        }
-
-        log.severe("Encountered empty responses in submission that were filled in a previous submission!"
-                + "\n\nParameters: " + HttpRequestHelper.printRequestParameters(request)
-                + "\n\nDeleting existing responses: " + JsonUtils.toJson(existingResponsesToDelete) + "\n");
-
         for (FeedbackResponseAttributes response : responsesToDelete) {
             logic.deleteFeedbackResponse(response);
         }

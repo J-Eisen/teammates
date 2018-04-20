@@ -431,7 +431,7 @@ public class InstructorFeedbackQuestionEditActionTest extends BaseActionTest {
                 Const.ParamsNames.FEEDBACK_QUESTION_SHOWRECIPIENTTO, FeedbackParticipantType.INSTRUCTORS.toString(),
                 Const.ParamsNames.FEEDBACK_QUESTION_EDITTYPE, "edit",
                 Const.ParamsNames.FEEDBACK_QUESTION_ID, fq.getId(),
-                Const.ParamsNames.FEEDBACK_QUESTION_GENERATEDOPTIONS, FeedbackParticipantType.NONE.toString()
+                Const.ParamsNames.FEEDBACK_QUESTION_MCQ_GENERATED_OPTIONS, FeedbackParticipantType.NONE.toString()
         };
 
         InstructorFeedbackQuestionEditAction a = getAction(editTextParams);
@@ -479,7 +479,7 @@ public class InstructorFeedbackQuestionEditActionTest extends BaseActionTest {
                 Const.ParamsNames.FEEDBACK_QUESTION_SHOWRECIPIENTTO, FeedbackParticipantType.INSTRUCTORS.toString(),
                 Const.ParamsNames.FEEDBACK_QUESTION_EDITTYPE, "edit",
                 Const.ParamsNames.FEEDBACK_QUESTION_ID, fq.getId(),
-                Const.ParamsNames.FEEDBACK_QUESTION_GENERATEDOPTIONS, FeedbackParticipantType.NONE.toString()
+                Const.ParamsNames.FEEDBACK_QUESTION_MCQ_GENERATED_OPTIONS, FeedbackParticipantType.NONE.toString()
         };
 
         a = getAction(editOptionParams);
@@ -522,7 +522,7 @@ public class InstructorFeedbackQuestionEditActionTest extends BaseActionTest {
                 Const.ParamsNames.FEEDBACK_QUESTION_SHOWRECIPIENTTO, FeedbackParticipantType.INSTRUCTORS.toString(),
                 Const.ParamsNames.FEEDBACK_QUESTION_EDITTYPE, "edit",
                 Const.ParamsNames.FEEDBACK_QUESTION_ID, fq.getId(),
-                Const.ParamsNames.FEEDBACK_QUESTION_GENERATEDOPTIONS, FeedbackParticipantType.STUDENTS.toString()
+                Const.ParamsNames.FEEDBACK_QUESTION_MCQ_GENERATED_OPTIONS, FeedbackParticipantType.STUDENTS.toString()
         };
 
         a = getAction(editToGeneratedOptionParams);
@@ -560,7 +560,7 @@ public class InstructorFeedbackQuestionEditActionTest extends BaseActionTest {
                 Const.ParamsNames.FEEDBACK_QUESTION_SHOWRECIPIENTTO, FeedbackParticipantType.INSTRUCTORS.toString(),
                 Const.ParamsNames.FEEDBACK_QUESTION_EDITTYPE, "delete",
                 Const.ParamsNames.FEEDBACK_QUESTION_ID, fq.getId(),
-                Const.ParamsNames.FEEDBACK_QUESTION_GENERATEDOPTIONS, FeedbackParticipantType.STUDENTS.toString()
+                Const.ParamsNames.FEEDBACK_QUESTION_MCQ_GENERATED_OPTIONS, FeedbackParticipantType.STUDENTS.toString()
         };
 
         a = getAction(deleteParams);
@@ -608,7 +608,8 @@ public class InstructorFeedbackQuestionEditActionTest extends BaseActionTest {
                 Const.ParamsNames.FEEDBACK_QUESTION_TYPE, "MSQ",
                 Const.ParamsNames.FEEDBACK_QUESTION_TEXT, "What do you like best about the class?",
                 Const.ParamsNames.FEEDBACK_QUESTION_DESCRIPTION, "more details",
-                Const.ParamsNames.FEEDBACK_QUESTION_NUMBEROFCHOICECREATED, Integer.toString(msqDetails.getNumOfMsqChoices()),
+                Const.ParamsNames.FEEDBACK_QUESTION_NUMBEROFCHOICECREATED,
+                    Integer.toString(msqDetails.getNumOfChoicesForMsq(fs.getCourseId(), FeedbackParticipantType.NONE)),
                 Const.ParamsNames.FEEDBACK_QUESTION_MSQCHOICE + "-0", msqDetails.getMsqChoices().get(0),
                 Const.ParamsNames.FEEDBACK_QUESTION_MSQCHOICE + "-1", msqDetails.getMsqChoices().get(1),
                 Const.ParamsNames.FEEDBACK_QUESTION_NUMBEROFENTITIESTYPE, "max",
@@ -617,7 +618,7 @@ public class InstructorFeedbackQuestionEditActionTest extends BaseActionTest {
                 Const.ParamsNames.FEEDBACK_QUESTION_SHOWRECIPIENTTO, FeedbackParticipantType.INSTRUCTORS.toString(),
                 Const.ParamsNames.FEEDBACK_QUESTION_EDITTYPE, "edit",
                 Const.ParamsNames.FEEDBACK_QUESTION_ID, fq.getId(),
-                Const.ParamsNames.FEEDBACK_QUESTION_GENERATEDOPTIONS, FeedbackParticipantType.NONE.toString()
+                Const.ParamsNames.FEEDBACK_QUESTION_MSQ_GENERATED_OPTIONS, FeedbackParticipantType.NONE.toString()
         };
 
         InstructorFeedbackQuestionEditAction a = getAction(editTextParams);
@@ -665,7 +666,7 @@ public class InstructorFeedbackQuestionEditActionTest extends BaseActionTest {
                 Const.ParamsNames.FEEDBACK_QUESTION_SHOWRECIPIENTTO, FeedbackParticipantType.INSTRUCTORS.toString(),
                 Const.ParamsNames.FEEDBACK_QUESTION_EDITTYPE, "edit",
                 Const.ParamsNames.FEEDBACK_QUESTION_ID, fq.getId(),
-                Const.ParamsNames.FEEDBACK_QUESTION_GENERATEDOPTIONS, FeedbackParticipantType.NONE.toString()
+                Const.ParamsNames.FEEDBACK_QUESTION_MSQ_GENERATED_OPTIONS, FeedbackParticipantType.NONE.toString()
         };
 
         a = getAction(editOptionParams);
@@ -708,7 +709,7 @@ public class InstructorFeedbackQuestionEditActionTest extends BaseActionTest {
                 Const.ParamsNames.FEEDBACK_QUESTION_SHOWRECIPIENTTO, FeedbackParticipantType.INSTRUCTORS.toString(),
                 Const.ParamsNames.FEEDBACK_QUESTION_EDITTYPE, "edit",
                 Const.ParamsNames.FEEDBACK_QUESTION_ID, fq.getId(),
-                Const.ParamsNames.FEEDBACK_QUESTION_GENERATEDOPTIONS, FeedbackParticipantType.STUDENTS.toString()
+                Const.ParamsNames.FEEDBACK_QUESTION_MSQ_GENERATED_OPTIONS, FeedbackParticipantType.STUDENTS.toString()
         };
 
         a = getAction(editToGeneratedOptionParams);
@@ -747,7 +748,7 @@ public class InstructorFeedbackQuestionEditActionTest extends BaseActionTest {
                 Const.ParamsNames.FEEDBACK_QUESTION_SHOWRECIPIENTTO, FeedbackParticipantType.INSTRUCTORS.toString(),
                 Const.ParamsNames.FEEDBACK_QUESTION_EDITTYPE, "delete",
                 Const.ParamsNames.FEEDBACK_QUESTION_ID, fq.getId(),
-                Const.ParamsNames.FEEDBACK_QUESTION_GENERATEDOPTIONS, FeedbackParticipantType.STUDENTS.toString()
+                Const.ParamsNames.FEEDBACK_QUESTION_MSQ_GENERATED_OPTIONS, FeedbackParticipantType.STUDENTS.toString()
         };
 
         a = getAction(deleteParams);

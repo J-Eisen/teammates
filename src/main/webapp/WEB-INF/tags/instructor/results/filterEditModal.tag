@@ -1,3 +1,4 @@
+<%@ tag trimDirectiveWhitespaces="true" %>
 <%@ tag description="instructorFeedbackResultsTop - Filter Panel Edit Modal" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
@@ -19,25 +20,33 @@
                 <label for="viewSelect" class="control-label">
                   View:
                 </label>
-                <div data-toggle="tooltip" title="View results in different formats">
-                  <select id="viewSelect" class="form-control" name="<%=Const.ParamsNames.FEEDBACK_RESULTS_SORTTYPE%>">
-                    <option value="<%=Const.FeedbackSessionResults.QUESTION_SORT_TYPE%>"<c:if test="${filterPanel.sortType == 'question'}"> selected</c:if>>
+                <select id="viewSelect" class="form-control" name="<%=Const.ParamsNames.FEEDBACK_RESULTS_SORTTYPE%>">
+                  <option value="<%=Const.FeedbackSessionResults.QUESTION_SORT_TYPE%>"<c:if test="${filterPanel.sortType == 'question'}"> selected</c:if>>
+                    <div data-toggle="tooltip" title="View results by question">
                       Group by - Question
-                    </option>
-                    <option value="<%=Const.FeedbackSessionResults.GRQ_SORT_TYPE%>"<c:if test="${filterPanel.sortType == 'giver-recipient-question'}"> selected</c:if>>
-                      Group by - Giver > Recipient > Question
-                    </option>
-                    <option value="<%=Const.FeedbackSessionResults.RGQ_SORT_TYPE%>"<c:if test="${filterPanel.sortType == 'recipient-giver-question'}"> selected</c:if>>
-                      Group by - Recipient > Giver > Question
-                    </option>
-                    <option value="<%=Const.FeedbackSessionResults.GQR_SORT_TYPE%>"<c:if test="${filterPanel.sortType == 'giver-question-recipient'}"> selected</c:if>>
-                      Group by - Giver > Question > Recipient
-                    </option>
-                    <option value="<%=Const.FeedbackSessionResults.RQG_SORT_TYPE%>"<c:if test="${empty filterPanel.sortType or filterPanel.sortType == 'recipient-question-giver'}"> selected</c:if>>
-                      Group by - Recipient > Question > Giver
-                    </option>
-                  </select>
-                </div>
+                    </div>
+                  </option>
+                  <option value="<%=Const.FeedbackSessionResults.GRQ_SORT_TYPE%>"<c:if test="${filterPanel.sortType == 'giver-recipient-question'}"> selected</c:if>>
+                    <div data-toggle="tooltip" title="View results by giver, then by recipient, and then by question">
+                      Group by - Giver &#8594; Recipient &#8594; Question
+                    </div>
+                  </option>
+                  <option value="<%=Const.FeedbackSessionResults.RGQ_SORT_TYPE%>"<c:if test="${filterPanel.sortType == 'recipient-giver-question'}"> selected</c:if>>
+                    <div data-toggle="tooltip" title="View results by recipient, then by giver, and then by question">
+                      Group by - Recipient &#8594; Giver &#8594; Question
+                    </div>
+                  </option>
+                  <option value="<%=Const.FeedbackSessionResults.GQR_SORT_TYPE%>"<c:if test="${filterPanel.sortType == 'giver-question-recipient'}"> selected</c:if>>
+                    <div data-toggle="tooltip" title="View results by giver, then by question, and then by recipient">
+                      Group by - Giver &#8594; Question &#8594; Recipient
+                    </div>
+                  </option>
+                  <option value="<%=Const.FeedbackSessionResults.RQG_SORT_TYPE%>"<c:if test="${empty filterPanel.sortType or filterPanel.sortType == 'recipient-question-giver'}"> selected</c:if>>
+                    <div data-toggle="tooltip" title="View results by recipient, then by question, and then by giver">
+                      Group by - Recipient &#8594; Question &#8594; Giver
+                    </div>
+                  </option>
+                </select>
               </div>
               <c:if test="${not empty filterPanel.sections}">
                 <div data-toggle="tooltip" title="View results by sections">
@@ -71,7 +80,7 @@
                   <label<c:if test="${filterPanel.sortType == 'question'}"> class="text-strike"</c:if>>
                     <input type="checkbox" name="<%=Const.ParamsNames.FEEDBACK_RESULTS_GROUPBYTEAM%>"
                         id="<%=Const.ParamsNames.FEEDBACK_RESULTS_GROUPBYTEAM%>"
-                        <c:if test="${filterPanel.groupedByTeam}">checked</c:if>
+                        <c:if test="${filterPanel.groupedByTeam}">checked=""</c:if>
                         <c:if test="${filterPanel.sortType != 'question'}">class="checkbox-group-by-team"</c:if>> Group by Teams
                   </label>
                 </div>
@@ -81,7 +90,7 @@
                   <label<c:if test="${filterPanel.sortType == 'recipient-giver-question' or filterPanel.sortType == 'giver-recipient-question'}"> class="text-strike"</c:if>>
                     <input type="checkbox" id="show-stats-checkbox"
                         name="<%=Const.ParamsNames.FEEDBACK_RESULTS_SHOWSTATS%>"
-                    <c:if test="${filterPanel.statsShown}"> checked</c:if>> Show Statistics
+                    <c:if test="${filterPanel.statsShown}"> checked=""</c:if>> Show Statistics
                   </label>
                 </div>
               </div>
@@ -91,7 +100,7 @@
                       id="indicate-missing-responses-checkbox"
                       value="true"
                       name="<%=Const.ParamsNames.FEEDBACK_RESULTS_INDICATE_MISSING_RESPONSES%>"
-                      <c:if test="${filterPanel.missingResponsesShown}"> checked</c:if>>
+                      <c:if test="${filterPanel.missingResponsesShown}"> checked=""</c:if>>
                   Indicate Missing Responses
                 </div>
               </div>
